@@ -1,0 +1,117 @@
+#directions/v5/{user}/{profile}/{coordinates}
+#getKeyInfo/{keyInfoId}
+#guid/{guid}/vins
+#listKeyInfo/{deviceId}
+#mileage-verification/vin/{vin}
+#/oa21mm/v1/ota/update/check
+#oa21mm/v1/svc/guid/{guid}/vins
+#/oa21mm/v1/svc/musicpreference
+#/oa21mm/v1/svc/subscriptions
+#/oa21mm/v1/svc/sync/vapreference
+#onetrust/consent/dataSubject/{id}
+#onetrust/consent/purposes/{id}
+#/orders
+#/osb/slider
+#/self-service/asset-device/mop/unlock-status
+#tou/product/mapping
+#translations/xKQ1i33s9htHVN9fi994WJZUE/feed/{locale}
+#/v1/account/emailsearch
+#/v1/campaigns
+/v1/canbus/trip/events
+/#v1/collisiondata
+#/v1/customer/eligibility
+#/v1/dashboardlights
+#/v1/deeplink
+/v1/destinations
+#/v1/eligibility
+/v1/external/vehicle-subscriptions
+/v1/feedback/metadata
+/v1/global/remote/ac-reservation
+/v1/global/remote/climate-settings
+/v1/global/remote/climate-status
+/v1/global/remote/electric/status
+/v1/global/remote/profile-settings
+/v1/global/remote/status
+/v1/home-charging/charge-boxes
+#/v1/home-charging/charge-boxes/energy-contract/country/{countryIso}/tariff-configuration
+/v1/home-charging/charge-boxes/invitations
+#/v1/home-charging/charge-boxes/{serialNumber}
+#/v1/home-charging/charge-boxes/{serialNumber}/charging-sessions-history
+/v1/home-charging/charge-boxes/smart-charging/details
+/v1/immobiliser
+# WORK /v1/insurance/contracts
+# WORK /v1/insurance/fhi
+# WORK /v1/insurance/ubi
+# WORK /v1/insurance/ubi/trips
+# WORK /v1/irf/list
+# WORK /v1/irf/search
+#/v1/legacy/remote/profile-settings
+#/v1/license
+/v1/location
+#/v1/marketing/banner
+#/v1/mobile-utilites/app-details/android
+#/v1/mp/parking
+#v1/mp/parking/booking/{bookingId}
+#/v1/mp/parking/booking/confirmation/{confirmationId}/
+#/v1/mp/parking/booking/user/{userId}
+#/v1/mp/parking/dashboard/{userId}
+#/v1/mp/parking/help
+#/v1/mp/parking/{locationId}
+#/v1/mp/payment/wallet/{userId}
+#/v1/mp/profile/{userId}
+#/v1/navigation
+# WORK /v1/one/dealers
+/v1/one/vehicle
+#/v1/ota/update
+#/v1/ota/update/history/all
+#/v1/ota/update/versions
+#/v1/poi-service/commands/vin/{vin}
+#/v1/poi-service/pois/contract/state
+#/v1/poi-service/pois/{id}
+#/1/poi-service/pois/{id}/rating
+# WORK /v1/preferred-dealer
+#/v1/radio
+/v1/servicehistory/vehicle/summary
+#/v1/sms/consent
+#/v1/subscriptions
+/v1/token
+/v1/trips
+/v1/trips/preferences
+/v1/vdr/history
+# WORK /v1/vehicle-alerts
+#/v1/vehicle/guidvins
+#/v1/vehiclehealth/report
+/v1/vehiclehealth/status
+/v1/vehicle/maintenance-schedule
+#/v1/vehicle-subscriptions
+#/v1/vehicle/vehicle-spec
+#/v1/vgi/eligibility
+/v1/vhr/history
+/v1/videos
+/v1/wifistatus
+#/v1/zuora/payments
+#/v1/zuora/rsa-signature
+#/v2/dealer-service/appointments
+#/v2/dealer-service/{dealerId}/advisors
+#/v2/dealer-service/{dealerId}/appointment/calendar/slots
+#/v2/dealer-service/{dealerId}/appointment/slots
+#/v2/dealer-service/{dealerId}/appointment/timeslot
+#/v2/dealer-service/{dealerId}/services
+#/v2/dealer-service/{dealerId}/transportoptions
+#/v2/download/ssa
+#/v2/manual/pdf/{documentURI}
+#WORK /v2/manuals
+#/v2/marketing/cards
+/v2/notification/history
+/v2/notification-preferences
+#/v2/rsa/contacts
+/v2/telemetry
+/v2/vehicle/guid
+/v3/account/secondaryUserName
+#WORK /v3/canbus/score
+#WORK /v3/canbus/trip
+/v3/telemetry
+/v4/account
+#/v4/dealers/{dealerCode}
+#/vehicleassociation/additionalInfo
+#vehicles/{vin}/privacy-mode
