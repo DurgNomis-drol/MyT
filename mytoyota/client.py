@@ -58,10 +58,10 @@ class MyT:
         _LOGGER.debug("Performing first login")
         await self._api.controller.login()
 
-    async def get_vehicles(self, metric: bool = True) -> Optional[List[Vehicle]]:
+    async def get_vehicles(self, metric: bool = True, brand: str = "T") -> Optional[List[Vehicle]]:
         """Return a list of vehicles."""
         _LOGGER.debug("Getting list of vehicles associated with the account")
-        vehicles = await self._api.get_vehicles_endpoint()
+        vehicles = await self._api.get_vehicles_endpoint(brand)
         if vehicles.payload is not None:
             return [Vehicle(self._api, v, metric) for v in vehicles.payload]
 

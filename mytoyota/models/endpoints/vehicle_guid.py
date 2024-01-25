@@ -390,7 +390,7 @@ class VehicleGuidModel(BaseModel):
     head_unit: _HeadUnitModel = Field(alias="headUnit")
     hw_type: Optional[Any] = Field(alias="hwType")  # TODO unsure what this returns
     image: str
-    imei: str
+    imei: Optional[str] = None
     katashiki_code: str = Field(alias="katashikiCode")
     manufactured_date: date = Field(alias="manufacturedDate")
     manufactured_code: str = Field(alias="manufacturerCode")

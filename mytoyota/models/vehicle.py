@@ -43,7 +43,9 @@ class Vehicle:
                 "name": "location",
                 "capable": vehicle_info.extended_capabilities.last_parked_capable
                 or vehicle_info.features.last_parked,
-                "function": partial(self._api.get_location_endpoint, vin=vehicle_info.vin),
+                "function": partial(
+                    self._api.get_location_endpoint, vin=vehicle_info.vin, brand=vehicle_info.brand
+                ),
             },
             {
                 "name": "health_status",
@@ -51,6 +53,7 @@ class Vehicle:
                 "function": partial(
                     self._api.get_vehicle_health_status_endpoint,
                     vin=vehicle_info.vin,
+                    brand=vehicle_info.brand,
                 ),
             },
             {
@@ -59,27 +62,44 @@ class Vehicle:
                 "function": partial(
                     self._api.get_vehicle_electric_status_endpoint,
                     vin=vehicle_info.vin,
+                    brand=vehicle_info.brand,
                 ),
             },
             {
                 "name": "telemetry",
                 "capable": vehicle_info.extended_capabilities.telemetry_capable,
-                "function": partial(self._api.get_telemetry_endpoint, vin=vehicle_info.vin),
+                "function": partial(
+                    self._api.get_telemetry_endpoint,
+                    vin=vehicle_info.vin,
+                    brand=vehicle_info.brand,
+                ),
             },
             {
                 "name": "notifications",
                 "capable": True,  # TODO Unsure of the required capability
-                "function": partial(self._api.get_notification_endpoint, vin=vehicle_info.vin),
+                "function": partial(
+                    self._api.get_notification_endpoint,
+                    vin=vehicle_info.vin,
+                    brand=vehicle_info.brand,
+                ),
             },
             {
                 "name": "status",
                 "capable": vehicle_info.extended_capabilities.vehicle_status,
-                "function": partial(self._api.get_remote_status_endpoint, vin=vehicle_info.vin),
+                "function": partial(
+                    self._api.get_remote_status_endpoint,
+                    vin=vehicle_info.vin,
+                    brand=vehicle_info.brand,
+                ),
             },
             {
                 "name": "service_history",
                 "capable": vehicle_info.features.service_history,
-                "function": partial(self._api.get_service_history_endpoint, vin=vehicle_info.vin),
+                "function": partial(
+                    self._api.get_service_history_endpoint,
+                    vin=vehicle_info.vin,
+                    brand=vehicle_info.brand,
+                ),
             },
         ]
         self._endpoint_collect = [

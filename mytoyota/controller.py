@@ -35,6 +35,19 @@ CACHE_FILENAME: Path = Path.home() / ".cache" / "toyota_credentials_cache_contai
 #      This seems to work sometimes but no others. Needs investigation.
 
 
+def get_brand_headers(headers: Dict[str, Any], brand: str) -> Dict[str, Any]:
+    """Update the headers, depending on the given car brand."""
+    if brand == "L":
+        headers |= {
+            "x-appbrand": "L",
+            "brand": "L",
+            "x-brand": "L",
+        }
+    elif brand == "T":
+        headers["x-brand"] = "T"
+    return headers
+
+
 class Controller:
     """Controller class."""
 
@@ -215,6 +228,7 @@ class Controller:
         self,
         method: str,
         endpoint: str,
+        brand: str = "T",
         vin: Optional[str] = None,
         body: Optional[Dict[str, Any]] = None,
         params: Optional[Dict[str, Any]] = None,
@@ -236,10 +250,10 @@ class Controller:
                 "guid": self._uuid,
                 "authorization": f"Bearer {self._token}",
                 "x-channel": "ONEAPP",
-                "x-brand": "T",
                 "user-agent": "okhttp/4.10.0",
             },
         )
+        headers = get_brand_headers(headers, brand)
         # Add vin if passed
         if vin is not None:
             headers.update({"vin": vin})
@@ -266,6 +280,7 @@ class Controller:
         self,
         method: str,
         endpoint: str,
+        brand: str = "T",
         vin: Optional[str] = None,
         body: Optional[Dict[str, Any]] = None,
         params: Optional[Dict[str, Any]] = None,
@@ -279,6 +294,8 @@ class Controller:
             endpoint (str): The endpoint to send the request to.
             vin (Optional[str], optional): The VIN (Vehicle Identification Number) to include
                 in the request. Defaults to None.
+            brand (str): The car brand used for the request.
+                Defaults to Toyota.
             body (Optional[Dict[str, Any]], optional): The JSON body to include in the request.
                 Defaults to None.
             params (Optional[Dict[str, Any]], optional): The query parameters to
@@ -294,6 +311,6 @@ class Controller:
         --------
             response = await request_json("GET", "/cars", vin="1234567890")
         """
-        response = await self.request_raw(method, endpoint, vin, body, params, headers)
+        response = await self.request_raw(method, endpoint, brand, vin, body, params, headers)
 
         return response.json()

@@ -31,6 +31,7 @@ from mytoyota.models.endpoints.vehicle_health import VehicleHealthResponseModel
 
 # Constants for tests
 VIN = "Random0815"
+BRAND = "T"
 GUID = "123e4567-e89b-12d3-a456-426614174000"
 ALIAS = "MyCar"
 TODAY = date.today()
@@ -161,8 +162,10 @@ async def test_api_request_and_parse_endpoints(
     api = Api(controller)
 
     # Act
-    response = await api._request_and_parse(model, method, endpoint, vin=VIN)
+    response = await api._request_and_parse(model, method, endpoint, vin=VIN, brand=BRAND)
 
     # Assert
-    controller.request_json.assert_called_once_with(method=method, endpoint=endpoint, vin=VIN)
+    controller.request_json.assert_called_once_with(
+        method=method, endpoint=endpoint, vin=VIN, brand=BRAND
+    )
     assert response == model(**response_data), f"Test ID: {test_id}"
