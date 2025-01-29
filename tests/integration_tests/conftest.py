@@ -1,10 +1,14 @@
 """Need for pytest or else it will cause an import error in pytest."""
 
+import json
 from pathlib import Path
+from typing import List
 
 import pytest
+from pytest_httpx import HTTPXMock
 
-from mytoyota.controller import CACHE_FILENAME
+TEST_USER_NAME = "user@email.info"
+TEST_USER_PASSWORD = "password"
 
 
 @pytest.fixture(scope="module")
@@ -13,8 +17,23 @@ def data_folder(request) -> str:
     return str(Path(request.module.__file__).parent / "data")
 
 
-@pytest.fixture(scope="function")
-def remove_cache() -> None:
-    """Remove the credentials cache file if it exists."""
-    # Remove cache file if exists
-    Path.unlink(CACHE_FILENAME, missing_ok=True)
+def build_routes(httpx_mock: HTTPXMock, filenames: List[str]) -> None:  # noqa: D103
+    for filename in filenames:
+        path: str = f"{Path(__file__).parent}/data/"
+
+        with open(
+            f"{path}/{filename}", encoding="utf-8"
+        ) as f:  # I cant see a problem for the tests
+            routes = json.load(f)
+            print("test routes", routes)
+
+        for route in routes:
+            httpx_mock.add_response(
+                method=route["request"]["method"],
+                url=route["request"]["url"],
+                status_code=route["response"]["status"],
+                content=route["response"]["content"]
+                if isinstance(route["response"]["content"], str)
+                else json.dumps(route["response"]["content"]),
+                headers=route["response"]["headers"],
+            )
