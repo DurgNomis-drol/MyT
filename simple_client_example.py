@@ -47,7 +47,9 @@ async def get_information():
     cars = await client.get_vehicles(metric=True)
 
     for car in cars:
+        await car.force_update()
         await car.update()
+
 
         # Dashboard Information
         pp.pprint(f"Dashboard: {car.dashboard}")
@@ -68,9 +70,9 @@ async def get_information():
         # pp.pprint(
         #    f"Summary: {[[x] for x in await car.get_summary(date.today() - timedelta(days=7 * 4), date.today(), summary_type=SummaryType.WEEKLY)]}"  # noqa: E501 # pylint: disable=C0301
         # )
-        pp.pprint(
-            f"Summary: {[[x] for x in await car.get_summary(date.today() - timedelta(days=6 * 30), date.today(), summary_type=SummaryType.MONTHLY)]}"  # noqa: E501
-        )
+        #pp.pprint(
+        #    f"Summary: {[[x] for x in await car.get_summary(date.today() - timedelta(days=6 * 30), date.today(), summary_type=SummaryType.MONTHLY)]}"  # noqa: E501
+        #)
         # pp.pprint(
         #    f"Summary: {[[x] for x in await car.get_summary(date.today() - timedelta(days=365), date.today(), summary_type=SummaryType.YEARLY)]}"  # noqa: E501 # pylint: disable=C0301
         # )
