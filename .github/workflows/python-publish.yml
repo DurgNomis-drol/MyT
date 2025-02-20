@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
       - name: "🚀 Build package and publish to pypi"
-        uses: "JRubics/poetry-publish@v2.1"
+        uses: "JRubics/poetry-publish@v1.16"
         with:
           pypi_token: "${{ secrets.PYPI_PASSWORD }}"
           plugins: "poetry-dynamic-versioning[plugin]"
